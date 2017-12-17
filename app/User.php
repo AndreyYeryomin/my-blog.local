@@ -34,7 +34,12 @@ class User extends Authenticatable
 
      public function publish(Post $post)
     {
-       
+
+       if(request()->hasFile('img_path')) {
+            $file = request()->file('img_path');
+            $file->move(public_path() . '/images/'.$this->id,'filename.jpg');
+        }
+        $post->img_path ='/images/'.$this->id.'/filename.jpg';
         $this->posts()->save($post);
     }
 }

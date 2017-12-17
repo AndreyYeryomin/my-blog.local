@@ -177,3 +177,10 @@ h6,
   margin-bottom: 0;
 }
 
+.blog-post-control{
+  margin-top: 10px;
+}
+.blog-post-control a{
+  margin-right: 10px;
+}
+
