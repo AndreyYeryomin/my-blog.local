@@ -33,9 +33,7 @@ class PostController extends Controller
 
      public function edit(Post $post)
     {
-        if(Auth::user() != $post->user){
-            return redirect()->back();
-        }
+        
         return view('posts.edit',compact("post"));
     
     }
