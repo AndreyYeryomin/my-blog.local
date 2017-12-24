@@ -7,15 +7,11 @@ use App\Post;
 use App\Repositories\Posts;
 use Carbon\Carbon;
 use Auth;
+use App\Http\Requests\RegistrationRequest;
 
 
 class PostController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['index','show']);
-    }
-
     public function index(Posts $posts)
     {
 
@@ -45,17 +41,17 @@ class PostController extends Controller
     }
 
 
-      public function update(Post $post)
+    public function update(Post $post)
     {
-       $this->validate(request() ,[
+        $this->validate(request() ,[
             'title'=>'required',
             'body'=>'required'
         ]);
-       $post->body = request('body');
-       $post->title = request('title');
-       $post->updated_at = Carbon::now();
-       $post->update();
-       return redirect()->home();
+        $post->body = request('body');
+        $post->title = request('title');
+        $post->updated_at = Carbon::now();
+        $post->update();
+        return redirect()->home();
     }
 
 
@@ -66,9 +62,9 @@ class PostController extends Controller
     		'title'=>'required',
     		'body'=>'required'
     	]);
-            auth()->user()->publish(
+        auth()->user()->publish(
             new Post(request(['title','body','img_path']))
-            );
+        );
     	return redirect()->home();
     }
 

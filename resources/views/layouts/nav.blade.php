@@ -3,6 +3,7 @@
           <nav class="nav">
             <a class="nav-link active" href="/">Home</a>
             <a class="nav-link" href="/posts/create">Create Post</a>
+            <a class="nav-link" href="/words">Add or delete filter words</a>
             @if(Auth::check())
             <a class="nav-link ml-auto" href="#">{{ Auth::user()->name }}</a>
             <a class="nav-link " href="/logout">Sign Out</a>
